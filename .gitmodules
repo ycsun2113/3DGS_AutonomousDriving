@@ -1,0 +1,3 @@
+[submodule "submodules/DrivingGaussian"]
+	path = submodules/DrivingGaussian
+	url = https://github.com/ycsun2113/DrivingGaussian.git
