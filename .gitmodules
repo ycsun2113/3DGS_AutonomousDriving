@@ -1,6 +1,7 @@
-[submodule "submodules/DrivingGaussian"]
-	path = submodules/DrivingGaussian
-	url = https://github.com/ycsun2113/DrivingGaussian.git
+# [submodule "submodules/DrivingGaussian"]
+# 	path = submodules/DrivingGaussian
+# 	url = https://github.com/ycsun2113/DrivingGaussian.git
 [submodule "submodules/GaussianSTORM"]
 	path = submodules/GaussianSTORM
 	url = https://github.com/ycsun2113/GaussianSTORM.git
+	branch = main
