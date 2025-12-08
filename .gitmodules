@@ -1,3 +1,4 @@
 [submodule "submodules/GaussianSTORM"]
 	path = submodules/GaussianSTORM
 	url = https://github.com/ycsun2113/GaussianSTORM.git
+	branch = main
