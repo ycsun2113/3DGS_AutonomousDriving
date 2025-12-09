@@ -25,11 +25,11 @@ Final project for ROB 535: Self-Driving Cars. -->
 
 # Demo
 
-<p align="center">
+<!-- <p align="center">
   <video src="media/waymo_scene_023_compare.mp4" alt="Scene reconstruction results on Waymo dataset (scene 023)" width="720"/>
 </p>
 
-# Reconstructed Results
+# Reconstructed Results -->
 - [Waymo Dataset scene_id 023](./media/waymo_scene_023_compare.mp4)
 - [Waymo Dataset scene_id 552](./media/waymo_scene_552_compare.mp4)
 - [NuScenes Dataset scene_id 000](./media/nuscenes_mini_000_compare.mp4)
@@ -37,12 +37,14 @@ Final project for ROB 535: Self-Driving Cars. -->
 
 ---
 
-# Try your own
+# Try yourself
 
 <div align="center">
+
 ## Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting
 
 [Official Street Gaussians Repository](https://github.com/zju3dv/street_gaussians) • [Project Page](https://zju3dv.github.io/street_gaussians) • [arXiv Paper](https://arxiv.org/pdf/2401.01339.pdf)
+
 </div>
 
 ### Installation
@@ -255,8 +257,10 @@ python metrics.py --config configs/nuscenes/nuscenes_mini_003.yaml
 ```
 ---
 <div align="center">
+
 ## OmniRe: Omni Urban Scene Reconstruction
 [Official OmniRe Repository](https://github.com/ziyc/drivestudio) • [Project Page](https://ziyc.github.io/omnire/) • [arXiv Paper](https://arxiv.org/abs/2408.16760)
+
 </div>
 
 ### Installation
@@ -313,9 +317,11 @@ python tools/train.py \
 ---
 
 <div align="center">
+
 ## STORM: Spatio-Temporal Reconstruction Model for Large-Scale Outdoor Scenes
 
 [Official STORM Repository](https://github.com/NVlabs/GaussianSTORM) • [Project Page](https://jiawei-yang.github.io/STORM/) • [arXiv Paper](https://arxiv.org/abs/2501.00602)
+
 </div>
 
 ### Installation
