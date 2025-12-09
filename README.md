@@ -26,7 +26,7 @@ Final project for ROB 535: Self-Driving Cars. -->
 # Demo
 
 <p align="center">
-  <img src="media/waymo_scene_552_compare.gif" alt="Scene reconstruction results on Waymo dataset (scene 023)" width="720"/>
+  <img src="media/waymo_scene_023_compare.gif" alt="Scene reconstruction results on Waymo dataset (scene 023)" width="720"/>
 </p>
 
 # Reconstructed Results
