@@ -1,17 +1,49 @@
-# 3DGS Scene Reconstruction Methods for Autonomous Driving
-Final project for ROB 535: Self-Driving Cars.
+<!-- # 3DGS Scene Reconstruction Methods for Autonomous Driving
+Final project for ROB 535: Self-Driving Cars. -->
+
+<p align="center">
+
+  <h1 align="center">3D Gaussian Splatting Scene Reconstruction Methods for Autonomous Driving</h1>
+  <h3 align="center">
+    <strong>Hao-Yu Chan</strong>
+    ,
+    <strong>Peng-Chen Chen</strong>
+    ,
+    <strong>Yung-Ching Sun</strong>
+  </h3>
+  <h3 align="center"><a href="./doc/report.pdf">Report</a> | <a href="./doc/poster.pdf">Poster</a></h3>
+  <div align="center"></div>
+</p>
+
+1. We benchmark three state-of-the-art 3D Gaussian Splatting–based reconstruction frameworks ([Street Gaussians](https://github.com/zju3dv/street_gaussians), [OmniRe](https://github.com/ziyc/drivestudio), [Gaussian STORM](https://github.com/NVlabs/GaussianSTORM)) on large-scale autonomous driving datasets, including [Waymo](https://waymo.com/open/) and [nuScenes](https://www.nuscenes.org/).
+
+2. Our study presents comprehensive quantitative evaluations (PSNR, SSIM, LPIPS) and qualitative comparisons, examining geometric stability, rendering fidelity, and the handling of dynamic objects in challenging driving scenarios.
+
+3. We provide guidelines for running these 3DGS reconstruction methods, summarize their respective strengths and limitations, and discuss potential directions for future research and system improvements.
+
+---
+
+# Demo
+
+<p align="center">
+  <video src="media/waymo_scene_023_compare.mp4" alt="Scene reconstruction results on Waymo dataset (scene 023)" width="720"/>
+</p>
 
 # Reconstructed Results
-- [Waymo Dataset scene_id 023](./Videos/waymo_scene_023_compare.mp4)
-- [Waymo Dataset scene_id 552](./Videos/waymo_scene_552_compare.mp4)
-- [NuScenes Dataset scene_id 000](./Videos/nuscenes_mini_000_compare.mp4)
-- [NuScenes Dataset scene_id 003](./Videos/nuscenes_mini_003_compare.mp4)
+- [Waymo Dataset scene_id 023](./media/waymo_scene_023_compare.mp4)
+- [Waymo Dataset scene_id 552](./media/waymo_scene_552_compare.mp4)
+- [NuScenes Dataset scene_id 000](./media/nuscenes_mini_000_compare.mp4)
+- [NuScenes Dataset scene_id 003](./media/nuscenes_mini_003_compare.mp4)
+
+---
 
 # Try your own
 
+<div align="center">
 ## Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting
 
 [Official Street Gaussians Repository](https://github.com/zju3dv/street_gaussians) • [Project Page](https://zju3dv.github.io/street_gaussians) • [arXiv Paper](https://arxiv.org/pdf/2401.01339.pdf)
+</div>
 
 ### Installation
 ```bash
@@ -222,8 +254,10 @@ python metrics.py --config configs/nuscenes/nuscenes_mini_000.yaml
 python metrics.py --config configs/nuscenes/nuscenes_mini_003.yaml
 ```
 ---
+<div align="center">
 ## OmniRe: Omni Urban Scene Reconstruction
 [Official OmniRe Repository](https://github.com/ziyc/drivestudio) • [Project Page](https://ziyc.github.io/omnire/) • [arXiv Paper](https://arxiv.org/abs/2408.16760)
+</div>
 
 ### Installation
 ```
@@ -277,9 +311,13 @@ python tools/train.py \
     --run_name $expname \
 ``` 
 ---
+
+<div align="center">
 ## STORM: Spatio-Temporal Reconstruction Model for Large-Scale Outdoor Scenes
 
 [Official STORM Repository](https://github.com/NVlabs/GaussianSTORM) • [Project Page](https://jiawei-yang.github.io/STORM/) • [arXiv Paper](https://arxiv.org/abs/2501.00602)
+</div>
+
 ### Installation
 
 ```bash
@@ -302,13 +340,54 @@ pip install git+https://github.com/nerfstudio-project/gsplat.git@2b0de894232d21e
 - To prepare the Waymo Open Dataset, please refer to [Waymo Data](submodules/GaussianSTORM/docs/WAYMO.md)
 - They haven't provided instructions for preparing other datasets.
 
+After completing all preprocessing steps, the dataset files should be organized as the following structure:
+```bash
+your_data_root
+    ├── annotations
+    │   └── segment-10455472356147194054_1560_000_1580_000_with_camera_labels.json # this file name will be different for each scene
+    ├── datasets
+    │   └── waymo
+    │       ├── training
+    │       │   └── scene_id
+    │       │       ├── cam_to_ego      # camera to ego-vehicle transformations: {cam_id}.txt
+    │       │       ├── cam_to_world    # camera to world transformations: {timestep:03d}_{cam_id}.txt
+    │       │       ├── depth_flows_4   # downsampled (1/4) depth flow maps: {timestep:03d}_{cam_id}.npy
+    │       │       ├── dynamic_masks   # bounding-box-generated dynamic masks: {timestep:03d}_{cam_id}.png
+    │       │       ├── ego_to_world    # ego-vehicle to world transformations: {timestep:03d}.txt
+    │       │       ├── ground_label_4  # downsampled (1/4) ground labels extracted from point cloud, used for flow evaluation only: {timestep:03d}.txt
+    │       │       ├── images          # original camera images: {timestep:03d}_{cam_id}.jpg
+    │       │       ├── images_4        # downsampled (1/4) camera images: {timestep:03d}_{cam_id}.jpg
+    │       │       ├── intrinsics      # camera intrinsics: {cam_id}.txt
+    │       │       ├── lidar           # lidar data: {timestep:03d}.bin
+    │       │       └── sky_masks_4     # sky masks: {timestep:03d}_{cam_id}.png
+    │       └── validation
+    │           ├── scene_id
+    │               ├── cam_to_ego
+    │               ├── cam_to_world
+    │               ├── depth_flows_4
+    │               ├── dynamic_masks
+    │               ├── ego_to_world
+    │               ├── ground_label_4
+    │               ├── images
+    │               ├── images_4
+    │               ├── intrinsics
+    │               ├── lidar
+    │               ├── sky_masks_4
+    └── scene_list
+        ├── waymo_train.txt
+        └── waymo_val.txt
+
+```
+
 ### Training
+
+You can train the model with multi-GPU using the following command:
 
 ```bash
 torchrun --nproc_per_node=2 main_storm.py \
-    --project 1207_storm_023 \
-    --exp_name 1207_pixel_storm_023 \
-    --data_root ../storm2.3/data/STORM2 \ # replace this with your data root.
+    --project project_name \
+    --exp_name exp_name \
+    --data_root ../your_data_root \ # replace this with your data root.
     --batch_size 4 \
     --num_iterations 30000 --lr_sched constant \
     --model STORM-B/8 --num_motion_tokens 16 \
@@ -322,12 +401,19 @@ torchrun --nproc_per_node=2 main_storm.py \
     --auto_resume 
 ```
 
+Notes:
+ - Checkpoints and logs are saved to `./work_dirs/<project>/<exp_name>/`
+ - `batch_size` is per-GPU, global batch = batch_size * #GPUs * #nodes
+ - See `main_storm.py` for additional arguments.
+
 ### Evaluation
+After training, run the evaluation script to compute the PSNR, SSIM, and LPIPS metrics for your model on the dataset.
+
 ```bash
 torchrun --nproc_per_node=2 main_storm.py \
-    --project 1207_storm_023 \
-    --exp_name 1207_pixel_storm_023 \
-    --data_root ../storm2.3/data/STORM2 \ # replace this with your data root.
+    --project project_name \
+    --exp_name exp_name \
+    --data_root ../your_data_root \ # replace this with your data root.
     --batch_size 4 \
     --num_iterations 30000 --lr_sched constant \
     --model STORM-B/8 --num_motion_tokens 16 \
@@ -344,25 +430,29 @@ torchrun --nproc_per_node=2 main_storm.py \
 
 ### Inference
 
+
 ```bash
 python inference.py \
-    --project 1207_storm_023 \
-    --exp_name 1207_storm_023_inference \
+    --project project_name \
+    --exp_name exp_name \
     --data_root ../storm2.3/data/STORM2 \ # replace this with your data root.
     --model STORM-B/8 --num_motion_tokens 16 \
     --use_sky_token --use_affine_token \
     --load_depth --load_flow --load_ground \
-    --load_from ./work_dir/1207_storm_023/1207_storm_023_inference/checkpoints/latest.pth \
+    --load_from ./work_dir/project_name/exp_name/checkpoints/latest.pth \ # replace this with the path to the checkpoint
     --output_dir ./work_dir 
+```
 
+
+```bash
 # Visualize only the reconstructed RGB results.
 python inference_rgb_only.py \
-    --project 1207_storm_023 \
-    --exp_name 1207_storm_023_inference \
+    --project project_name \
+    --exp_name exp_name \
     --data_root ../storm2.3/data/STORM2 \ # replace this with your data root.
     --model STORM-B/8 --num_motion_tokens 16 \
     --use_sky_token --use_affine_token \
     --load_depth --load_flow --load_ground \
-    --load_from ./work_dir/1207_storm_023/1207_storm_023_inference/checkpoints/latest.pth \
+    --load_from ./work_dir/project_name/exp_name/checkpoints/latest.pth \ # replace this with the path to the checkpoint
     --output_dir ./work_dir 
 ```
