@@ -2,3 +2,12 @@
 [submodule "submodules/OmniRe"]
 	path = submodules/OmniRe
 	url = https://github.com/ziyc/drivestudio.git
+
+[submodule "submodules/GaussianSTORM"]
+	path = submodules/GaussianSTORM
+	url = https://github.com/ycsun2113/GaussianSTORM.git
+	branch = main
+  
+[submodule "submodules/street_gaussians"]
+	path = submodules/street_gaussians
+	url = git@github.com:PCChen827/street_gaussians.git
