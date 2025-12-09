@@ -25,11 +25,11 @@ Final project for ROB 535: Self-Driving Cars. -->
 
 # Demo
 
-<!-- <p align="center">
-  <video src="media/waymo_scene_023_compare.mp4" alt="Scene reconstruction results on Waymo dataset (scene 023)" width="720"/>
+<p align="center">
+  <img src="media/waymo_scene_552_compare.gif" alt="Scene reconstruction results on Waymo dataset (scene 023)" width="720"/>
 </p>
 
-# Reconstructed Results -->
+# Reconstructed Results
 - [Waymo Dataset scene_id 023](./media/waymo_scene_023_compare.mp4)
 - [Waymo Dataset scene_id 552](./media/waymo_scene_552_compare.mp4)
 - [NuScenes Dataset scene_id 000](./media/nuscenes_mini_000_compare.mp4)
