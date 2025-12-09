@@ -1,6 +1,14 @@
 # 3DGS Scene Reconstruction Methods for Autonomous Driving
 Final project for ROB 535: Self-Driving Cars.
 
+# Reconstructed Results
+- [Waymo Dataset scene_id 023](./Videos/waymo_scene_023_compare.mp4)
+- [Waymo Dataset scene_id 552](./Videos/waymo_scene_552_compare.mp4)
+- [NuScenes Dataset scene_id 000](./Videos/nuscenes_mini_000_compare.mp4)
+- [NuScenes Dataset scene_id 003](./Videos/nuscenes_mini_003_compare.mp4)
+
+# Try your own
+
 ## Street Gaussians: Modeling Dynamic Urban Scenes with Gaussian Splatting
 
 [Official Street Gaussians Repository](https://github.com/zju3dv/street_gaussians) • [Project Page](https://zju3dv.github.io/street_gaussians) • [arXiv Paper](https://arxiv.org/pdf/2401.01339.pdf)
@@ -214,12 +222,6 @@ python metrics.py --config configs/nuscenes/nuscenes_mini_000.yaml
 python metrics.py --config configs/nuscenes/nuscenes_mini_003.yaml
 ```
 ---
-# Reconstructed Results
-- [Waymo Dataset scene_id 023](./Videos/waymo_scene_023_compare.mp4)
-- [Waymo Dataset scene_id 552](./Videos/waymo_scene_552_compare.mp4)
-- [NuScenes Dataset scene_id 000](./Videos/nuscenes_mini_000_compare.mp4)
-- [NuScenes Dataset scene_id 003](./Videos/nuscenes_mini_003_compare.mp4)
-
 ## OmniRe: Omni Urban Scene Reconstruction
 [Official OmniRe Repository](https://github.com/ziyc/drivestudio) • [Project Page](https://ziyc.github.io/omnire/) • [arXiv Paper](https://arxiv.org/abs/2408.16760)
 
