@@ -1,3 +1,4 @@
-[submodule "submodules"]
-	path = submodules
+
+[submodule "submodules/OmniRe"]
+	path = submodules/OmniRe
 	url = https://github.com/ziyc/drivestudio.git
